@@ -1,7 +1,16 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-6">
-      <p class="lead fw-bold fs-4">Welcome to dashboard.</p>
+<div class="container">
+  <p class="lead fw-bold fs-4">Welcome to dashboard.</p>
+  <%= image_tag(current_user.profile_photo.url, class: "img rounded-circle img-response img-fluid img-thumbnail profile-photo") if current_user.profile_photo? %>
+  <div class="row mb-3">
+    <div class="col-6 mt-2">
+      <p class="lead fw-bold text-primary fs-4">Your information details : </p>  
+      <ul class="list-group list-group-flush">
+        <li class="lead list-group-item">Name : <%= current_user.full_name %></li>
+        <li class="lead list-group-item">Email : <%= current_user.email %></li>
+        <li class="lead list-group-item">Role : <%= current_user.role.name %></li>
+        <li class="lead list-group-item">Tickets posted : <span class="badge rounded-pill bg-danger">4</span></li>
+        <li class="list-group col-md-4 mt-2"><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %></li>
+      </ul>
     </div>
   </div>
 </div>
