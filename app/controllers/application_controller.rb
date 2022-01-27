@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(*)
-    posts_path
+    dashboard_path
   end
 
   def after_sign_out_path_for(*)
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    attributes = %i[first_name last_name role profile_photo]
+    attributes = %i[first_name last_name role_id profile_photo]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end
