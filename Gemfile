@@ -72,3 +72,7 @@ group :test do
 end
 
 gem 'bootstrap', '~> 5.1.3'
+gem 'devise'
+gem 'friendly_id', '~> 5.4.0'
+gem 'simple_form'
+
