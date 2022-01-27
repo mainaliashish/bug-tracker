@@ -13,7 +13,7 @@
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                           <li><%= link_to "Login", new_user_session_path, class: "dropdown-item" %></li>
                           <li><%= link_to "Signup", new_user_registration_path, class: "dropdown-item" %></li>
-                          <li><%= link_to "Profile", "#", class: "dropdown-item" %></li>
+                          <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %></li>
                           <li><hr class="dropdown-divider" /></li>
                           <li><%= button_to "Logout", destroy_user_session_path, class: "dropdown-item", method: :delete %></li>
                       </ul>

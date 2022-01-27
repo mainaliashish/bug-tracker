@@ -7,10 +7,10 @@
       <%= f.input :first_name, class: 'mb-2', wrapper_html: { class: 'mb-2' } %>
       <%= f.input :last_name, class: 'mb-2', wrapper_html: { class: 'mb-2' }  %>
       <%= f.input :email, class: 'mb-2', wrapper_html: { class: 'mb-2' }  %>
-      <%= f.association :role %>
+      <%= f.association :role, selected: Role.first %>
       <%= f.input :password, class: 'mb-2', wrapper_html: { class: 'mb-2' }  %>
       <%= f.input :password_confirmation, class: 'mt-2', wrapper_html: { class: 'mb-2' }  %>
-      <%= f.button :submit, data: { turbo: false }, class: 'btn btn-primary mt-2' %>
+      <%= f.button :submit, data: { turbo: false }, value: 'Register', class: 'btn btn-primary mt-2' %>
     <% end %>
   </div>
 </div>
