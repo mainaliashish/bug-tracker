@@ -6,7 +6,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    id = current_user.id
     @projects = Project.all
-    @tickets = Ticket.all
+    @tickets = Ticket.where(id: id)
   end
 end

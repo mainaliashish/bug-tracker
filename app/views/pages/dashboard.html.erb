@@ -16,7 +16,8 @@
       <% if current_user&.role.identifier == "project_manager"%>
         <%= render 'pages/projects' %>
       <% elsif current_user&.role.identifier == "user" %>
-        <%= render 'pages/tickets' %>
+        <p class="lead fw-bold text-primary fs-4">Your tickets : </p>  
+        <%= render partial: 'tickets/table', locals: { page: 'dashboard' }  %>
       <% end %>
     </div>
   </div>

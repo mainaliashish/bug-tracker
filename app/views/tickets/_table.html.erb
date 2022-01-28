@@ -2,9 +2,11 @@
   <thead>
     <tr>
       <th class="text-center">Title</th>
-      <th class="text-center">Description</th>
+      <% unless page == 'dashboard' %>
+        <th class="text-center">Description</th>
+      <% end %>
       <th class="text-center">Project</th>
-      <th class="text-center">Bug type</th>
+      <th class="text-center">Type</th>
       <th class="text-center">Action</th>
     </tr>
   </thead>
@@ -17,11 +19,13 @@
       <td class="text-center"><%= ticket.bug_type %></td>
       <td>
         <%= link_to 'show', ticket_path(ticket), class: 'btn btn-primary btn-sm' %>
-        <% if current_user&.role.identifier == "user"%>
-          <%= link_to 'edit', edit_ticket_path(ticket), class: 'btn btn-success btn-sm' %>
-          <%= link_to 'delete', ticket_path(ticket), class: 'btn btn-danger btn-sm', data: {
-                      turbo_method: :delete,
-                      turbo_confirm: "Are you sure?" } %>
+        <% unless page == 'dashboard' %>
+          <% if  user_signed_in? && current_user.id == ticket.user_id && current_user&.role.identifier == "user"%>
+            <%= link_to 'edit', edit_ticket_path(ticket), class: 'btn btn-success btn-sm' %>
+            <%= link_to 'delete', ticket_path(ticket), class: 'btn btn-danger btn-sm', data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?" } %>
+          <% end %>
         <% end %>
       </td>
     </tr>
