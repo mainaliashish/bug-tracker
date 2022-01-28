@@ -1,16 +1,20 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-6">
-      <p class="lead text-danger fw-bold fs-4">
-        Newly posted Tickets
-      </p>
-      <%= render 'pages/table' %>
+      <div class="col-12">
+        <p class="lead text-danger fw-bold fs-4">
+          Newly posted Tickets
+        </p>
+        <%= render partial: 'tickets/table', locals: { page: 'home' } %>
+      </div>
     </div>
-    <div class="col-6">
-      <p class="lead text-success fw-bold fs-4">
-        Recently solved Tickets
-      </p>
-      <%= render 'pages/table' %>
+    <hr/>
+    <div class="row">
+      <div class="col-12">
+        <p class="lead text-success fw-bold fs-4">
+          Newly added Projects
+        </p>
+        <%= render partial: 'projects/table', locals: { page: 'home' }%>
+      </div>
     </div>
   </div>
 

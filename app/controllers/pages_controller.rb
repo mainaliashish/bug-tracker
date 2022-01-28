@@ -3,11 +3,12 @@ class PagesController < ApplicationController
 
   def homepage
     @projects = Project.all
+    @tickets = Ticket.all
   end
 
   def dashboard
     id = current_user.id
-    @projects = Project.all
+    @projects = Project.where(project_manager_id: id)
     @tickets = Ticket.where(id: id)
   end
 end
