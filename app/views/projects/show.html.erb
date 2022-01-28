@@ -8,8 +8,13 @@
         <p class="card-text"><%= @project.description %></p>
       </div>
       <div class="card-footer">
-        <span class="lead">Total Bug reported : 1</span>
+        <span class="lead">Total Bug reported : <%= @project.tickets.count %></span>
       </div>
+    </div>
+    <div class="col-6 mt-4">
+      <% if @project.tickets&.count > 0 %>
+        <%= render partial: 'projects/tickets', locals: { tickets: @project.tickets } %>
+      <% end %>
     </div>
     <%= link_to 'Go back', projects_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
 </div>

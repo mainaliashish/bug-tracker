@@ -8,7 +8,6 @@
         <li class="lead list-group-item">Name : <%= current_user.full_name %></li>
         <li class="lead list-group-item">Email : <%= current_user.email %></li>
         <li class="lead list-group-item">Role : <%= current_user.role.name %></li>
-        <li class="lead list-group-item">Tickets posted : <span class="badge rounded-pill bg-danger">4</span></li>
         <li class="list-group col-md-4 mt-2"><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %></li>
       </ul>
     </div>

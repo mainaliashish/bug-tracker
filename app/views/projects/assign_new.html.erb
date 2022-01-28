@@ -1,0 +1,15 @@
+<div class="col-6">
+  <%= simple_form_for @ticket, defaults: { input_html: { class: 'mb-2' } } do |f| %>
+    <%= f.input :title, input_html: {disabled: :true} %>
+    <%= f.input :description, input_html: {disabled: :true} %>
+    <%= f.input :priority, value_method: :second %>
+    <%= f.input :status, value_method: :second %>
+    <%= f.input :developer_id, collection: User.developers, label_method: :email, value_method: :id, input_html: { multiple: true } %>
+    <%= f.button :submit, data: { turbo: false }, value: 'Assign', class: 'btn btn-primary mt-2 mb-3' %>
+  <% end %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <%= link_to 'Go back', tickets_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+  </div>
+</div>

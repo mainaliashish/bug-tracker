@@ -41,6 +41,13 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 
+  def assign_new
+    @ticket = Ticket.find_by_id(params[:id])
+    render :assign_new
+  end
+
+  def assign_create; end
+
   private
 
   def project_params
