@@ -74,5 +74,6 @@ end
 gem 'bootstrap', '~> 5.1.3'
 gem 'carrierwave', '~> 2.0'
 gem 'devise'
+gem 'enum_help'
 gem 'friendly_id', '~> 5.4.0'
 gem 'simple_form'

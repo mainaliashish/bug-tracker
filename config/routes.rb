@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "pages#homepage"
   get "/dashboard", to: "pages#dashboard", as: "dashboard"
   resources :projects
+  resources :tickets
 end

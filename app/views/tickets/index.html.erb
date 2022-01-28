@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <% if current_user&.role.identifier == "user"%>
+        <p class="lead fw-bold text-primary fs-4">Your Tickets
+        <%= link_to "Create new ticket", new_ticket_path, class: "btn btn-primary float-end" %></p>
+    <% else %>
+      <div class="col-6">
+        <p class="lead fw-bold text-primary fs-4">Tickets
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'tickets/table' %>

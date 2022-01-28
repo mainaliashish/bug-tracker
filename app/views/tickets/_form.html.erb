@@ -1,0 +1,14 @@
+<div class="col-6">
+  <%= simple_form_for @ticket, defaults: { input_html: { class: 'mb-2' } } do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description, as: :text,  input_html: { rows: 6 } %>
+    <%= f.association :project, selected: Project.first %>
+    <%= f.input :bug_type, value_method: :second %>
+    <%= f.button :submit, data: { turbo: false }, value: button_text, class: 'btn btn-primary mt-2 mb-3' %>
+  <% end %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <%= link_to 'Go back', tickets_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+  </div>
+</div>

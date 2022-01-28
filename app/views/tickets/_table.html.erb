@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-center">Title</th>
+      <th class="text-center">Description</th>
+      <th class="text-center">Project</th>
+      <th class="text-center">Bug type</th>
+      <th class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= link_to ticket.title, ticket_path(ticket) %></td>
+      <td><%= truncate(ticket.description, length: 20) %></td>
+      <td class="text-center"><%= ticket.project.name %></td>
+      <td class="text-center"><%= ticket.bug_type %></td>
+      <td>
+        <%= link_to 'show', ticket_path(ticket), class: 'btn btn-primary btn-sm' %>
+        <% if current_user&.role.identifier == "user"%>
+          <%= link_to 'edit', edit_ticket_path(ticket), class: 'btn btn-success btn-sm' %>
+          <%= link_to 'delete', ticket_path(ticket), class: 'btn btn-danger btn-sm', data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?" } %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
