@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
-    <p class="lead fw-bold text-primary fs-4">Your current project
-    <%= link_to "Create new project", new_project_path, class: "btn btn-primary float-end" %></p>
-
+    <% if current_user&.role.identifier == "project_manager"%>
+      <p class="lead fw-bold text-primary fs-4">Your current project
+      <%= link_to "Create new project", new_project_path, class: "btn btn-primary float-end" %></p>
+    <% else %>
+      <p class="lead fw-bold text-primary fs-4">Projects
+    <% end %>
     <table class="table">
       <thead>
         <tr>
@@ -15,13 +18,17 @@
       <tbody>
         <% @projects.each do |project| %>
         <tr>
-          <td><%= link_to project.name, '#' %></td>
+          <td><%= link_to project.name, project_path(project) %></td>
           <td><%= truncate(project.description, length: 80) %></td>
           <td class="text-center"><%= rand(1..5) %></td>
           <td>
             <%= link_to 'show', project_path(project), class: 'btn btn-primary btn-sm' %>
-            <%= link_to 'edit', edit_project_path(project), class: 'btn btn-success btn-sm' %>
-            <%= link_to 'delete', '#', class: 'btn btn-danger btn-sm' %>
+            <% if current_user&.role.identifier == "project_manager"%>
+              <%= link_to 'edit', edit_project_path(project), class: 'btn btn-success btn-sm' %>
+              <%= link_to 'delete', project_path(project), class: 'btn btn-danger btn-sm', data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?" } %>
+            <% end %>
           </td>
         </tr>
         <% end %>
