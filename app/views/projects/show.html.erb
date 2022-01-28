@@ -1,0 +1,16 @@
+<div class="container mb-4">
+    <p class="lead fw-bold text-primary fs-4">Project Information</p>
+    <div class="card col-6">
+      <div class="card-header">
+        <span class="lead">Project Name : <%= @project.name %></span>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= @project.description %></p>
+      </div>
+      <div class="card-footer">
+        <span class="lead">Total Bug reported : 1</span>
+      </div>
+    </div>
+    <%= link_to 'Go back', projects_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
+
+</div>

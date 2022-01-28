@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <p class="lead fw-bold text-primary fs-4">Your current project
+    <%= link_to "Create new project", new_project_path, class: "btn btn-primary float-end" %></p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Bugs count</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, '#' %></td>
+          <td><%= truncate(project.description, length: 80) %></td>
+          <td class="text-center"><%= rand(1..5) %></td>
+          <td>
+            <%= link_to 'show', project_path(project), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'edit', edit_project_path(project), class: 'btn btn-success btn-sm' %>
+            <%= link_to 'delete', '#', class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+  <div class="col-6">
+    <%= simple_form_for @project do |f| %>
+      <%= f.input :name, class: 'mb-2' %>
+      <%= f.input :description, class: 'mb-2'  %>
+      <%= f.button :submit, data: { turbo: false }, value: button_text, class: 'btn btn-primary mt-2 mb-3' %>
+    <% end %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <%= link_to 'Go back', projects_path, class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
+  </div>

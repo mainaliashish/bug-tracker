@@ -2,11 +2,5 @@
   <p class="lead text-success fw-bold fs-4">
     Create a new project
   </p>
-  <div class="col-6">
-    <%= simple_form_for @project do |f| %>
-      <%= f.input :name, class: 'mb-2' %>
-      <%= f.input :description, class: 'mb-2'  %>
-      <%= f.button :submit, data: { turbo: false }, value: 'Create Project', class: 'btn btn-primary mt-2 mb-3' %>
-    <% end %>
-  </div>
+  <%= render partial: 'projects/form', locals: { button_text: 'Create Project' } %>
 </div>

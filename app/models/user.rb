@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role_id, presence: true
   belongs_to :role
+  has_many :projects, class_name: 'Project', foreign_key: :project_manager_id
+
   mount_uploader :profile_photo, ProfilePhotoUploader
 
   def full_name
