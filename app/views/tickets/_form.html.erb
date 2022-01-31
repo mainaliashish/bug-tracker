@@ -2,7 +2,7 @@
   <%= simple_form_for @ticket, defaults: { input_html: { class: 'mb-2' } } do |f| %>
     <%= f.input :title %>
     <%= f.input :description, as: :text,  input_html: { rows: 6 } %>
-    <%= f.association :project, selected: Project.first %>
+    <%= f.association :project, selected: Project.first%>
     <%= f.input :bug_type, value_method: :second %>
     <%= f.button :submit, data: { turbo: false }, value: button_text, class: 'btn btn-primary mt-2 mb-3' %>
   <% end %>
