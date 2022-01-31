@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_ticket, only: %i[edit update show destroy]
+  before_action :set_ticket, only: %i[edit update update_status show destroy]
 
   def index
     @tickets = Ticket.all
@@ -31,6 +31,15 @@ class TicketsController < ApplicationController
       redirect_to ticket_path(@ticket)
     else
       render :edit
+    end
+  end
+
+  def update_status
+    if params[:status].present? && [1, 2, 3].include?(params[:status].to_i)
+      @ticket.update(status: params[:status].to_i)
+      redirect_to @ticket, notice: "Status changed to #{@ticket.status.capitalize}"
+    else
+      redirect_to @ticket, alert: 'Error changing status.'
     end
   end
 

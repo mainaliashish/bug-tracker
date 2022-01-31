@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root "pages#homepage"
   get "/dashboard", to: "pages#dashboard", as: "dashboard"
   resources :projects
-  resources :tickets
+  resources :tickets do 
+    member do
+      get :update_status
+    end
+  end
   get "tickets/assign/:id", to: "projects#assign_new", as: "assign_get"
   post "tickets/assign", to: "projects#assign_ticket", as: "assign_ticket"
 end
