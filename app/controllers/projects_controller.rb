@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :require_project_manager, except: %i[index show]
   before_action :set_project, only: %i[edit update show destroy]
+  before_action :set_ticket_params, only: :assign_ticket
 
   def index
     @projects = Project.all.order(created_at: :desc)
@@ -46,12 +47,22 @@ class ProjectsController < ApplicationController
     render :assign_new
   end
 
-  def assign_create; end
+  def assign_ticket
+    @ticket = Ticket.find_by_id(params[:ticket][:id])
+    @ticket.update(set_ticket_params)
+    flash[:notice] = 'Ticket assigned successfully.'
+    redirect_to dashboard_path
+  end
 
   private
 
   def project_params
     params.require(:project).permit(:name, :description)
+  end
+
+  def set_ticket_params
+    ticket_params = %i[developer_id priority status]
+    params.require(:ticket).permit(ticket_params)
   end
 
   def set_project

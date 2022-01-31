@@ -9,7 +9,7 @@
     <%= f.input :last_name, class: 'mb-2'  %>
     <%= f.input :email, class: 'mb-2'  %>
     <%= f.file_field :profile_photo, required: true, class: 'mb-2 mt-3' %>
-    <%= f.association :role, selected: Role.first, class: 'mb-2' %>
+    <%= f.association :role %>
     <%= f.input :password, class: 'mb-2 mt-2', hint: 'Leave blank if you do not want to change your password.'   %>
     <%= f.input :password_confirmation, class: 'mt-2', hint: 'Leave blank if you do not want to change your password.'   %>
     <%= f.input :current_password, class: 'mt-2', hint: 'Input your current password to proceed' %>

@@ -1,10 +1,11 @@
 <div class="col-6">
-  <%= simple_form_for @ticket, defaults: { input_html: { class: 'mb-2' } } do |f| %>
+  <%= simple_form_for @ticket, url: assign_ticket_path, method: :post, defaults: { input_html: { class: 'mb-2' } } do |f| %>
     <%= f.input :title, input_html: {disabled: :true} %>
     <%= f.input :description, input_html: {disabled: :true} %>
     <%= f.input :priority, value_method: :second %>
     <%= f.input :status, value_method: :second %>
-    <%= f.input :developer_id, collection: User.developers, label_method: :email, value_method: :id, input_html: { multiple: true } %>
+    <%= f.input :id, as: :hidden, value: @ticket.id %>
+    <%= f.input :developer_id, collection: User.developers, label_method: :email, value_method: :id %>
     <%= f.button :submit, data: { turbo: false }, value: 'Assign', class: 'btn btn-primary mt-2 mb-3' %>
   <% end %>
   <div class="card mb-3">

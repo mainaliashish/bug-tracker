@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
-  scope :developers, -> { select(:id, :email).where(role_id: 3) }
+  scope :developers, -> { select(:id, :email).where(role_id: 2) }
 
   def full_name
     "#{first_name} #{last_name}"
