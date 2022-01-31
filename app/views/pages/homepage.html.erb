@@ -32,8 +32,12 @@
         List of projects and managers
       </p>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Project 1</li>
-        <li class="list-group-item">Project 2</li>
+        <% @projects.each do |project| %>
+          <li class="list-group-item">
+            <%= link_to project.name, project_path(project) %>
+            <span class="float-end">- <%= project.project_manager.full_name %></span>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -22,8 +22,10 @@
           <%= link_to 'Create Ticket', new_ticket_path, class: "btn btn-success btn-sm" %>
         </span>
         <% end %>
-        </p>  
-        <%= render partial: 'tickets/table', locals: { page: 'dashboard', tickets: @tickets }  %>
+        </p>
+        <% if @tickets.count > 0 %>
+          <%= render partial: 'tickets/table', locals: { page: 'dashboard', tickets: @tickets }  %>
+        <% end %>
       <% end %>
     </div>
   </div>

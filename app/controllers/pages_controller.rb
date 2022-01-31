@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def homepage
     @projects = Project.order(created_at: :desc)
-    @tickets = Ticket.where.not(status: 'fixed')
-    @fixed_tickets = Ticket.where(status: 'fixed')
+    @tickets = Ticket.where.not(status: 'fixed').order(created_at: :desc)
+    @fixed_tickets = Ticket.where(status: 'fixed').order(created_at: :desc)
   end
 
   def dashboard
