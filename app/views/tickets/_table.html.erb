@@ -28,7 +28,7 @@
       <td class="text-center">
         <%= link_to 'show', ticket_path(ticket), class: 'btn btn-primary btn-sm' %>
         <% unless page == 'dashboard' %>
-          <% if  user_signed_in? && current_user.id == ticket.user_id && current_user&.role.identifier == "user"%>
+          <% if  user_signed_in? && current_user.id == ticket.user_id && current_user&.role.identifier == "user" %>
             <%= link_to 'edit', edit_ticket_path(ticket), class: 'btn btn-success btn-sm' %>
             <%= link_to 'delete', ticket_path(ticket), class: 'btn btn-danger btn-sm', data: {
                         turbo_method: :delete,
