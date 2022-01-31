@@ -1,5 +1,5 @@
 <div class="container">
-  <p class="lead fw-bold fs-4">Welcome to dashboard.</p>
+  <p class="lead fw-bold fs-4">Welcome to dashboard</p>
   <%= image_tag(current_user.profile_photo.url, class: "img rounded-circle img-response img-fluid img-thumbnail profile-photo") if current_user.profile_photo? %>
   <div class="row mb-3">
     <div class="col-6 mt-2">
@@ -15,7 +15,14 @@
       <% if current_user&.role.identifier == "project_manager"%>
         <%= render partial: 'projects/table', locals: { page: 'dashboard' } %>
       <% elsif current_user&.role.identifier == "user" || current_user&.role.identifier == "developer" %>
-        <p class="lead fw-bold text-primary fs-4">Your tickets : </p>  
+        <p class="lead fw-bold text-primary fs-4">Your tickets : 
+        <% if current_user&.role.identifier == "user" %>
+        <span class="float-end">
+          <%= link_to 'All Tickets', tickets_path, class: "btn btn-danger btn-sm" %>
+          <%= link_to 'Create Ticket', new_ticket_path, class: "btn btn-success btn-sm" %>
+        </span>
+        <% end %>
+        </p>  
         <%= render partial: 'tickets/table', locals: { page: 'dashboard' }  %>
       <% end %>
     </div>

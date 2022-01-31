@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, except: %i[homepage]
 
   def homepage
-    @projects = Project.all
+    @projects = Project.order(created_at: :desc)
     @tickets = Ticket.where.not(status: 'fixed')
     @fixed_tickets = Ticket.where(status: 'fixed')
   end

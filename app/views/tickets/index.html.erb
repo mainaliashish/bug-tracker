@@ -11,4 +11,9 @@
   </div>
 </div>
 
-<%= render partial: 'tickets/table', locals: { page: 'index' } %>
+<%= render partial: 'tickets/table', locals: { page: 'index', tickets: @tickets } %>
+<% if current_user %>
+  <%= link_to 'Go back', dashboard_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
+<% else %>
+  <%= link_to 'Go back', root_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
+<% end %>

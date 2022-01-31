@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @tickets.each do |ticket| %>
+    <% tickets.each do |ticket| %>
     <tr>
       <td><%= link_to ticket.title, ticket_path(ticket) %></td>
       <% unless page == 'dashboard' %>
@@ -20,7 +20,7 @@
       <% end %>
       <td class="text-center"><%= ticket.project.name %></td>
       <td class="text-center"><%= ticket.bug_type %></td>
-      <td class="text-center"><%= ticket.status&.capitalize %></td>
+      <td class="text-center"><%= ticket.status ? ticket.status.capitalize : 'Unassigned' %></td>
       <td class="text-center">
         <%= link_to 'show', ticket_path(ticket), class: 'btn btn-primary btn-sm' %>
         <% unless page == 'dashboard' %>
@@ -36,3 +36,4 @@
     <% end %>
   </tbody>
 </table>
+
