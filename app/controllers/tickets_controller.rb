@@ -35,7 +35,7 @@ class TicketsController < ApplicationController
   end
 
   def update_status
-    if params[:status].present? && [1, 2, 3].include?(params[:status].to_i)
+    if params[:status].present? && [1, 2, 3, 4].include?(params[:status].to_i)
       @ticket.update(status: params[:status].to_i)
       redirect_to @ticket, notice: "Status changed to #{@ticket.status.capitalize}"
     else
