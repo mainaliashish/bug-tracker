@@ -23,7 +23,7 @@
         </span>
         <% end %>
         </p>  
-        <%= render partial: 'tickets/table', locals: { page: 'dashboard' }  %>
+        <%= render partial: 'tickets/table', locals: { page: 'dashboard', tickets: @tickets }  %>
       <% end %>
     </div>
   </div>

@@ -20,7 +20,11 @@
       <% end %>
       <td class="text-center"><%= ticket.project.name %></td>
       <td class="text-center"><%= ticket.bug_type %></td>
-      <td class="text-center"><%= ticket.status ? ticket.status.capitalize : 'Unassigned' %></td>
+      <% if ticket.status == 'fixed' %>
+        <td class="text-center fixed_ticket"><%= ticket.status ? ticket.status.capitalize : 'Unassigned' %></td>
+      <% else %>
+        <td class="text-center"><%= ticket.status ? ticket.status.capitalize : 'Unassigned' %></td>
+      <% end %>
       <td class="text-center">
         <%= link_to 'show', ticket_path(ticket), class: 'btn btn-primary btn-sm' %>
         <% unless page == 'dashboard' %>

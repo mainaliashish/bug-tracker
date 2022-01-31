@@ -11,8 +11,8 @@
         <p class="card-text">Priority : <%= @ticket.priority %></p>
         <p class="card-text">Bug Type : <%= @ticket.bug_type %></p>
       </div>
-    <% if current_user && current_user.role.identifier == "developer" %>
       <div class="card-footer">
+      <% if current_user && current_user.role.identifier == "developer" %>
           <span id="toggle_status">
           Action
           <span class="float-end">
@@ -27,8 +27,10 @@
           <% end %>
           </span>
           </span>
+      <% else %>
+        <span>Status : <span class="btn btn-primary btn-sm"><%= @ticket.status %></span></span>
+      <% end %>
       </div>
-    <% end %>
     </div>
     <% if current_user %>
       <%= link_to 'Go back', dashboard_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
