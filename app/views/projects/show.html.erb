@@ -11,10 +11,12 @@
         <span class="lead">Total Bug reported : <%= @project.tickets.count %></span>
       </div>
     </div>
+    <% if current_user && current_user&.role.identifier == "project_manager"%>
     <div class="col-6 mt-4">
       <% if @project.tickets&.count > 0 %>
         <%= render partial: 'projects/tickets', locals: { tickets: @project.tickets } %>
       <% end %>
     </div>
+    <% end %>
     <%= link_to 'Go back', projects_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
 </div>

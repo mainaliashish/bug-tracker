@@ -3,7 +3,8 @@ class PagesController < ApplicationController
 
   def homepage
     @projects = Project.all
-    @tickets = Ticket.all
+    @tickets = Ticket.where.not(status: 'fixed')
+    @fixed_tickets = Ticket.where(status: 'fixed')
   end
 
   def dashboard
