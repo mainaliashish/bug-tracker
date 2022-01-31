@@ -14,7 +14,7 @@
     <div class="col-6 mt-2">
       <% if current_user&.role.identifier == "project_manager"%>
         <%= render partial: 'projects/table', locals: { page: 'dashboard' } %>
-      <% elsif current_user&.role.identifier == "user" %>
+      <% elsif current_user&.role.identifier == "user" || current_user&.role.identifier == "developer" %>
         <p class="lead fw-bold text-primary fs-4">Your tickets : </p>  
         <%= render partial: 'tickets/table', locals: { page: 'dashboard' }  %>
       <% end %>

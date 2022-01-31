@@ -1,0 +1,21 @@
+<div class="container mb-4">
+    <p class="lead fw-bold text-primary fs-4">Ticket Information</p>
+    <div class="card col-6">
+      <div class="card-header">
+        <span class="lead">
+          Ticket Title : <%= @ticket.title %>
+          <% if current_user&.role.identifier == "developer" %>
+          <span class="float-end" id="toggle_status">
+            <%= link_to  "Mark Fixed", '#', class: 'btn btn-primary btn-sm'%>
+          </span>
+          <% end %>
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Description : <%= @ticket.description %></p>
+        <p class="card-text">Priority : <%= @ticket.priority %></p>
+        <p class="card-text">Bug Type : <%= @ticket.bug_type %></p>
+      </div>
+    </div>
+    <%= link_to 'Go back', dashboard_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
+</div>

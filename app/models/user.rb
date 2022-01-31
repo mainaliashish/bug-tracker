@@ -6,10 +6,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role_id, presence: true
+
   belongs_to :role
   has_many :projects, class_name: 'Project', foreign_key: :project_manager_id
   has_many :tickets, class_name: 'Ticket', foreign_key: :ticket_id
-
   mount_uploader :profile_photo, ProfilePhotoUploader
 
   scope :developers, -> { select(:id, :email).where(role_id: 2) }
