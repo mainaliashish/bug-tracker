@@ -1,0 +1,13 @@
+<%= "=" * 80 %>
+<%= @user.full_name %> has created a new ticket in your project.
+<%= "=" * 80 %>
+The project name is <%= @ticket.project.name %>
+<%= "-" * 80 %>
+
+Ticket Title : <%= @ticket.title %>
+
+Ticket Description : <%= @ticket.description %>
+
+To login to the site, just follow this link: <%= link_to 'Login Url', @url %>
+
+Have a great day! 🙂

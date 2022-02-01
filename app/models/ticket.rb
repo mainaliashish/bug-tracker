@@ -1,4 +1,6 @@
 class Ticket < ApplicationRecord
+  after_create :ticket_mail
+
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true
 
@@ -8,4 +10,8 @@ class Ticket < ApplicationRecord
   enum priority: { high: 1, medium: 2, low: 3 }
   enum bug_type: { bug: 1, issue: 2, others: 3 }
   enum status: { fixed: 1, assigned: 2, active: 3, reviewing: 4 }
+
+  def ticket_mail
+    TicketMailer.ticket_created(self).deliver
+  end
 end
