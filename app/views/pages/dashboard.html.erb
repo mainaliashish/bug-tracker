@@ -27,7 +27,7 @@
         </span>
         <% end %>
         </p>
-        <% if @tickets.count > 0 %>
+        <% if @tickets && @tickets.count > 0 %>
           <%= render partial: 'tickets/table', locals: { page: 'dashboard', tickets: @tickets }  %>
         <% end %>
       <% end %>
