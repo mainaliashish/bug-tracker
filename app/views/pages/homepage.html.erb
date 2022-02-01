@@ -1,4 +1,5 @@
 <div class="container">
+  <% if @tickets&.count > 0 %>
   <div class="row">
       <div class="col-12">
         <p class="lead text-danger fw-bold fs-4">
@@ -7,7 +8,9 @@
         <%= render partial: 'tickets/table', locals: { page: 'home', tickets: @tickets } %>
       </div>
   </div>
-  <div class="row">
+  <% end %>
+  <% if @fixed_tickets&.count > 0 %>
+    <div class="row">
       <div class="col-12">
         <p class="lead text-success fw-bold fs-4">
           Recently solved Tickets
@@ -15,6 +18,7 @@
         <%= render partial: 'tickets/table', locals: { page: 'home', tickets: @fixed_tickets } %>
       </div>
     </div>
+  <% end %>
     <hr/>
     <div class="row">
       <div class="col-12">
