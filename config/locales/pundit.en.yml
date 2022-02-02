@@ -6,3 +6,9 @@ en:
      edit?: 'You do not have permission to edit Project!'
      update?: 'You do not have permission to update Project!'
      create?: 'You do not have permission to create Project!'
+   ticket_policy:
+     new?: 'You do not have permission to create Ticket!'
+     edit?: 'You do not have permission to edit Ticket!'
+     update?: 'You do not have permission to update Ticket!'
+     create?: 'You do not have permission to create Ticket!'
+     update_status?: 'You do not have permission to update Ticket Status!'

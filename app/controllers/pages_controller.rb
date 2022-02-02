@@ -11,6 +11,6 @@ class PagesController < ApplicationController
     id = current_user.id
     role = current_user.role.identifier
     results = helpers.switch_dashboard(id, role)
-    results.include?(:tickets) ? @tickets = results : @projects = results
+    role == 'project_manager' ? @projects = results : @tickets = results
   end
 end
