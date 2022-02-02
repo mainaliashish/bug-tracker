@@ -49,11 +49,13 @@ class ProjectsController < ApplicationController
 
   def assign_new
     @ticket = Ticket.find_by_id(params[:id])
+    authorize @project
     render :assign_new
   end
 
   def assign_ticket
     @ticket = Ticket.find_by_id(params[:ticket][:id])
+    authorize @project
     @ticket.update(set_ticket_params)
     flash[:notice] = 'Ticket assigned successfully.'
     redirect_to dashboard_path

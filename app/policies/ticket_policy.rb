@@ -1,14 +1,14 @@
-class ProjectPolicy < ApplicationPolicy
+class TicketPolicy < ApplicationPolicy
   attr_reader :user, :ticket
 
-  def initialize(user, project)
+  def initialize(user, ticket)
     super
     @user = user
-    @project = project
+    @ticket = ticket
   end
 
   def new?
-    @user.role.identifier.eql? 'project_manager'
+    @user.role.identifier.eql? 'user'
   end
 
   def create?
@@ -16,11 +16,15 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def edit?
-    @project.project_manager_id == @user.id
+    @ticket.user_id == @user.id
   end
 
   def update?
     edit?
+  end
+
+  def update_status?
+    @ticket.developer_id == @user.id
   end
 
   def destroy?

@@ -8,11 +8,13 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    authorize @ticket
   end
 
   def show; end
 
   def create
+    authorize @ticket
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = current_user.id
     if @ticket.save
@@ -23,9 +25,12 @@ class TicketsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @ticket
+  end
 
   def update
+    authorize @ticket
     if @ticket.update(ticket_params)
       flash[:info] = 'Ticket Was Updated Successfully!'
       redirect_to ticket_path(@ticket)
@@ -35,6 +40,7 @@ class TicketsController < ApplicationController
   end
 
   def update_status
+    authorize @ticket
     if params[:status].present? && [1, 2, 3, 4].include?(params[:status].to_i)
       @ticket.update(status: params[:status].to_i)
       redirect_to @ticket, notice: "Status changed to #{@ticket.status.capitalize}"
@@ -44,6 +50,7 @@ class TicketsController < ApplicationController
   end
 
   def destroy
+    authorize @ticket
     @ticket.destroy
     flash[:notice] = 'Ticket Was Deleted Successfully!'
     redirect_to tickets_path
