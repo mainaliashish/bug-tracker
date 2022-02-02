@@ -1,0 +1,8 @@
+en:
+ pundit:
+   default: 'You cannot perform this action.'
+   project_policy:
+     new?: 'You do not have permission to create Project!'
+     edit?: 'You do not have permission to edit Project!'
+     update?: 'You do not have permission to update Project!'
+     create?: 'You do not have permission to create Project!'
