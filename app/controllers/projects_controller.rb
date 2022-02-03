@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    authorize @project
     @project = Project.new(project_params)
     @project.project_manager_id = current_user.id
+    authorize @project
     if @project.save
       flash[:notice] = 'Project created successfully.'
       redirect_to projects_path
@@ -49,13 +49,13 @@ class ProjectsController < ApplicationController
 
   def assign_new
     @ticket = Ticket.find_by_id(params[:id])
-    authorize @project
+    authorize @ticket
     render :assign_new
   end
 
   def assign_ticket
     @ticket = Ticket.find_by_id(params[:ticket][:id])
-    authorize @project
+    authorize @ticket
     @ticket.update(set_ticket_params)
     flash[:notice] = 'Ticket assigned successfully.'
     redirect_to dashboard_path

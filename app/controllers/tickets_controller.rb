@@ -14,9 +14,9 @@ class TicketsController < ApplicationController
   def show; end
 
   def create
-    authorize @ticket
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = current_user.id
+    authorize @ticket
     if @ticket.save
       flash[:notice] = 'Ticket created successfully.'
       redirect_to tickets_path

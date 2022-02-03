@@ -27,6 +27,14 @@ class TicketPolicy < ApplicationPolicy
     @ticket.developer_id == @user.id
   end
 
+  def assign_new?
+    @ticket.project.project_manager_id == @user.id
+  end
+
+  def assign_ticket?
+    assign_new?
+  end
+
   def destroy?
     edit?
   end
