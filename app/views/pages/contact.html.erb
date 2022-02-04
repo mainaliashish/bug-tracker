@@ -1,0 +1,8 @@
+<div class="container py-4">
+  <%= simple_form_for @contact, defaults: { input_html: { class: 'mb-2' } } do |form| %>
+    <%= form.input :name %>
+    <%= form.input :email %>
+    <%= form.input :message, as: :text,  input_html: { rows: 6 } %>
+    <%= form.button :submit, data: { turbo: false }, value: 'Submit', class: 'btn btn-primary' %>
+  <% end %>
+</div>

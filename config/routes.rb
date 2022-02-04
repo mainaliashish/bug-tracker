@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root "pages#homepage"
   get "/dashboard", to: "pages#dashboard", as: "dashboard"
+  get "/contacts", to: "pages#contact"
+  post "/contacts", to: "pages#create_contact"
   resources :projects
   resources :tickets do 
     member do
