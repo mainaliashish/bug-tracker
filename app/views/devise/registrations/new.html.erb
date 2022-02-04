@@ -7,7 +7,7 @@
       <%= f.input :first_name %>
       <%= f.input :last_name  %>
       <%= f.input :email  %>
-      <%= f.association :role, selected: Role.first %>
+      <%= f.input :role_id, as: :select, collection: Role.roles %>
       <%= f.input :password  %>
       <%= f.input :password_confirmation %>
       <%= f.button :submit, data: { turbo: false }, value: 'Register', class: 'btn btn-primary' %>
