@@ -1,13 +1,9 @@
 class ContactMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.contact_mailer.contact_created.subject
-  #
-  def contact_created
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def contact_created(contact)
+    @url = 'http://localhost:3000/users/sign_in'
+    @contact = contact
+    mail to: 'iamshishmainali@gmail.com',
+         from: @contact.email,
+         subject: "#{@contact.name} has messaaged you."
   end
 end

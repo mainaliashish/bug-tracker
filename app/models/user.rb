@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.user_created(self).deliver
   end
+
+  def admin?
+    role.identifier == 'admin'
+  end
 end
