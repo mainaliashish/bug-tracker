@@ -21,7 +21,8 @@ class PagesController < ApplicationController
   def create_contact
     @contact = Contact.new(contact_params)
     if @contact.save
-      flash[:notice] = "We have received your message #{contact_params[:name]}, we will reach you shortly."
+      flash[:notice] = "We have received your message #{contact_params[:name]},
+                        we will reach you shortly."
       redirect_to root_path
     else
       render :contact
