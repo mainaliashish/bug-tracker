@@ -221,6 +221,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select_all-rails (0.3.2)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -289,6 +290,7 @@ DEPENDENCIES
   rails (~> 7.0.1)
   redis (~> 4.0)
   sassc-rails
+  select_all-rails
   selenium-webdriver
   sidekiq (~> 6.4)
   simple_form
