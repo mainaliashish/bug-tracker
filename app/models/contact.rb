@@ -10,6 +10,6 @@ class Contact < ApplicationRecord
   end
 
   def send_mail_admin
-    SendContactToAdminJob.set(wait: 5.minutes).perform_later(self)
+    SendContactToAdminJob.set(wait: 2.minutes).perform_later(self)
   end
 end
