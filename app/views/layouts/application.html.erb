@@ -11,12 +11,12 @@
     <%= favicon_link_tag asset_path('bug-tracker.ico') %>
   </head>
 
-  <body>
+  <body class= "d-flex flex-column min-vh-100">
     <%= render partial: 'layouts/navbar' %>
     <div class="container">
       <%= render partial: 'layouts/message'%>
       <%= yield %>
-      <%= render partial: 'layouts/footer' %>
     </div>
+      <%= render partial: 'layouts/footer' %>
   </body>
 </html>
