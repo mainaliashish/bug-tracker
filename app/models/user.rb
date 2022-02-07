@@ -26,4 +26,16 @@ class User < ApplicationRecord
   def admin?
     role.identifier == 'admin'
   end
+
+  def user?
+    role.identifier == 'user'
+  end
+
+  def developer?
+    role.identifier == 'developer'
+  end
+
+  def project_manager?
+    role.identifier == 'project_manager'
+  end
 end

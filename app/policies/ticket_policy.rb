@@ -8,7 +8,7 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def new?
-    @user.role.identifier.eql? 'user'
+    @user.user?
   end
 
   def create?

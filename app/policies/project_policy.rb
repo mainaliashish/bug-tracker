@@ -8,7 +8,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def new?
-    @user.role.identifier.eql? 'project_manager'
+    @user.project_manager?
   end
 
   def create?
