@@ -49,6 +49,16 @@ class TicketsController < ApplicationController
     end
   end
 
+  def update_ticket_status
+    tickets = Ticket.where(id: params[:ticket_ids])
+    return unless tickets.count > 0
+
+    @ticket = tickets[0]
+    authorize @ticket if @ticket
+    tickets.update_all(status: 1)
+    redirect_to dashboard_path, notice: 'Status updated.'
+  end
+
   def destroy
     authorize @ticket
     @ticket.destroy
