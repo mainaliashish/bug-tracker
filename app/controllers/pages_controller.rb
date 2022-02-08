@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, except: %i[homepage contact create_contact]
 
   def homepage
-    # PlayWithRailsJob.set(wait: 2.minutes).perform_later
     @projects = Project.order(created_at: :desc)
     @tickets = Ticket.where.not(status: 'fixed').order(created_at: :desc)
     @fixed_tickets = Ticket.where(status: 'fixed').order(created_at: :desc)
