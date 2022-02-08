@@ -71,6 +71,10 @@ GEM
     autoprefixer-rails (10.4.2.0)
       execjs (~> 2)
     bcrypt (3.1.16)
+    better_errors (2.9.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.8.1)
     bootsnap (1.10.2)
       msgpack (~> 1.2)
@@ -97,6 +101,7 @@ GEM
       mini_mime (>= 0.1.3)
       ssrf_filter (~> 1.0)
     childprocess (4.1.0)
+    coderay (1.1.3)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
@@ -275,6 +280,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  better_errors
   bootsnap
   bootstrap (~> 5.1.3)
   capybara

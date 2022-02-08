@@ -71,12 +71,12 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'better_errors'
 gem 'bootstrap', '~> 5.1.3'
 gem 'carrierwave', '~> 2.0'
 gem 'devise'
 gem 'enum_help'
 gem 'friendly_id', '~> 5.4.0'
 gem 'pundit'
-gem 'select_all-rails'
 gem 'sidekiq', '~> 6.4'
 gem 'simple_form'
