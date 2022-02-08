@@ -55,7 +55,7 @@ class TicketsController < ApplicationController
 
     @ticket = tickets[0]
     authorize @ticket if @ticket
-    tickets.update_all(status: 1)
+    tickets.update_all(status: params[:status])
     redirect_to dashboard_path, notice: 'Status updated.'
   end
 

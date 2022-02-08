@@ -49,6 +49,8 @@
   </tbody>
 </table>
   <% if page == 'dashboard' && current_user&.developer? %>
+    <%= form.select :status, Ticket.statuses %>
+
     <%= form.submit data: { turbo: false }, value: "Update status", class:"btn btn-primary btn-sm"%>
   <% end %>
 <% end %>
