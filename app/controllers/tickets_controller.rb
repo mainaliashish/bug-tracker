@@ -51,7 +51,7 @@ class TicketsController < ApplicationController
 
   def update_ticket_status
     tickets = Ticket.where(id: params[:ticket_ids])
-    return unless tickets.count > 0
+    return unless tickets.present?
 
     @ticket = tickets[0]
     authorize @ticket if @ticket
