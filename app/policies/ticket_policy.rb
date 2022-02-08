@@ -35,6 +35,10 @@ class TicketPolicy < ApplicationPolicy
     assign_new?
   end
 
+  def update_ticket_status?
+    update_status?
+  end
+
   def destroy?
     edit?
   end

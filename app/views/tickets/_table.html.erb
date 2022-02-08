@@ -1,3 +1,4 @@
+<%= form_with url: "/update_ticket_status", method: :put do |form| %>
 <table class="table">
   <thead>
     <tr>
@@ -13,8 +14,13 @@
   </thead>
   <tbody>
     <% if tickets.count > 0 %>
-      <% tickets.each do |ticket| %>
-      <tr>
+    <% tickets.each do |ticket| %>
+    <tr>
+        <% if current_user&.developer? && policy(ticket).update_status? && page == 'dashboard' %>
+        <td>
+          <%= check_box_tag "ticket_ids[]", ticket.id %>
+        </td>
+        <% end %>
         <td style="width: 25%"><%= link_to ticket.title, ticket_path(ticket) %></td>
         <% unless page == 'dashboard' %>
         <td><%= truncate(ticket.description, length: 20) %></td>
@@ -42,4 +48,7 @@
     <% end %>
   </tbody>
 </table>
-
+  <% if page == 'dashboard' && current_user&.developer? %>
+    <%= form.submit data: { turbo: false }, value: "Update status", class:"btn btn-primary btn-sm"%>
+  <% end %>
+<% end %>

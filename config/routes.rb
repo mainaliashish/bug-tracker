@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   end
   get "tickets/assign/:id", to: "projects#assign_new", as: "assign_get"
   post "tickets/assign", to: "projects#assign_ticket", as: "assign_ticket"
+  put "/update_ticket_status", to: "tickets#update_ticket_status", as: "update_ticket_status"
 end
