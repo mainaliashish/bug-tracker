@@ -5,8 +5,9 @@ class Project < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
 
   has_many :tickets
-
+  # scope :project_tickets_weekly, -> { tickets.where(created_at: (Date.today - 7.days)..Date.today) }
   def project_tickets_weekly
     tickets.where(created_at: (Date.today - 7.days)..Date.today)
+    # tickets.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 end
