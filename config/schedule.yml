@@ -1,0 +1,5 @@
+# config/schedule.yml
+send_weekly_tickets_managers:
+  cron: "0 18 * * 6"
+  class: "SendWeeklyTicketsToProjectManagerJob"
+  queue: default
