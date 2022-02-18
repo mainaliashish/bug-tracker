@@ -19,7 +19,6 @@
       </div>
     </div>
   <% end %>
-    <hr/>
     <div class="row">
       <div class="col-12">
         <p class="lead text-success fw-bold fs-4">
@@ -43,6 +42,68 @@
           </li>
         <% end %>
       </ul>
+    </div>
+    <div class="col-6">
+      <p class="lead text-success fw-bold fs-4">
+        Application Statistics
+      </p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card bg-light">
+            <div class="card-body text-center">
+              <%= link_to "#{@projects.count} Projects", projects_path, class: 'card-title fs-3 text-decoration-none' %>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card bg-light">
+            <div class="card-body text-center">
+              <%= link_to "#{Ticket.all_tickets} Total Tickets", tickets_path, class: 'card-title fs-3 text-decoration-none' %>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title text-center"><%= Ticket.fixed_tickets %> Fixed tickets</h5>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title text-center"><%= Ticket.active_tickets %> Reviewing Tickets</h5>
+            </div>
+          </div>
+        </div>
+
+    
+        <div class="col-md-4 mt-4">
+          <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= User.total_developers %> lead developers</h5>
+          </div>
+        </div>
+        </div>
+        <div class="col-md-4 mt-4">
+          <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= User.project_managers %> project managers</h5>
+          </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4">
+          <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= User.normal_users %> reporting Users</h5>
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

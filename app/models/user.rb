@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   scope :developers, -> { select(:id, :email).where(role_id: 2) }
 
+  scope :total_developers, -> { where(role_id: 2).count }
+  scope :project_managers, -> { where(role_id: 3).count }
+  scope :normal_users, -> { where(role_id: 1).count }
+
   def self.all_project_manager
     User.where(role_id: 3)
   end
@@ -24,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.user_created(self).deliver
+    UserMailer.user_created(self).deliver_later
   end
 
   def admin?
