@@ -10,6 +10,7 @@
     </tr>
   </thead>
   <tbody>
+    <%== pagy_bootstrap_nav(@pagy) if @pagy %>
     <% @projects.each do |project| %>
     <tr>
       <td><%= link_to project.name, project_path(project) %></td>

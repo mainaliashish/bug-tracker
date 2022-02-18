@@ -2,9 +2,9 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, except: %i[homepage contact create_contact]
 
   def homepage
-    @projects = Project.order(created_at: :desc)
-    @tickets = Ticket.where.not(status: 'fixed').order(created_at: :desc)
-    @fixed_tickets = Ticket.where(status: 'fixed').order(created_at: :desc)
+    @projects = Project.recent_five_projects
+    @tickets = Ticket.recent_five_tickets
+    @fixed_tickets = Ticket.recent_five_fixed_tickets
   end
 
   def dashboard

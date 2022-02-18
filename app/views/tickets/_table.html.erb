@@ -13,7 +13,9 @@
     </tr>
   </thead>
   <tbody>
+    
     <% if tickets.count > 0 %>
+      <%== pagy_bootstrap_combo_nav_js(@pagy) if @pagy %>
     <% tickets.each do |ticket| %>
     <tr>
         <% if current_user&.developer? && policy(ticket).update_status? && page == 'dashboard' %>

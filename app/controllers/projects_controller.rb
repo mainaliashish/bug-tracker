@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_ticket_params, only: :assign_ticket
 
   def index
-    @projects = Project.all.order(created_at: :desc)
+    @pagy, @projects = pagy(Project.all.order(created_at: :desc), items: 5)
   end
 
   def show; end
