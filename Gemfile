@@ -77,6 +77,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'devise'
 gem 'enum_help'
 gem 'friendly_id', '~> 5.4.0'
+gem 'pagy', '~> 5.10' # omit patch digit
 gem 'pundit'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-cron'
