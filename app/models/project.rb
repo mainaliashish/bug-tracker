@@ -4,7 +4,10 @@ class Project < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
   validates :description, presence: true, length: { minimum: 10 }
 
-  has_many :tickets
+  scope :recent_five_projects, -> { order(created_at: :desc).limit(5) }
+  scope :sorted_projects, -> { order(created_at: :desc) }
+
+  has_many :tickets, dependent: :destroy
   # scope :project_tickets_weekly, -> { tickets.where(created_at: (Date.today - 7.days)..Date.today) }
   def project_tickets_weekly
     tickets.where(created_at: (Date.today - 7.days)..Date.today)
