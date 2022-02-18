@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[edit update update_status show destroy]
 
   def index
-    @tickets = Ticket.all
+    @pagy, @tickets = pagy(Ticket.all, items: 10)
   end
 
   def new

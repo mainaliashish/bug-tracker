@@ -16,7 +16,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def edit?
-    @project.project_manager_id == @user.id
+    @user.admin? || @project.project_manager_id == @user.id
   end
 
   def update?
@@ -27,9 +27,9 @@ class ProjectPolicy < ApplicationPolicy
     edit?
   end
 
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
+  # class Scope < Scope
+  #   def resolve
+  #     scope.all
+  #   end
+  # end
 end

@@ -16,7 +16,7 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def edit?
-    @ticket.user_id == @user.id
+    @user.admin? || @ticket.user_id == @user.id
   end
 
   def update?
@@ -24,11 +24,11 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def update_status?
-    @ticket.developer_id == @user.id
+    @user.admin? || @ticket.developer_id == @user.id
   end
 
   def assign_new?
-    @ticket.project.project_manager_id == @user.id
+    @user.admin? || @ticket.project.project_manager_id == @user.id
   end
 
   def assign_ticket?
@@ -43,9 +43,9 @@ class TicketPolicy < ApplicationPolicy
     edit?
   end
 
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
+  # class Scope < Scope
+  #   def resolve
+  #     scope.all
+  #   end
+  # end
 end

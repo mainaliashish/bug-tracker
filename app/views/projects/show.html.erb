@@ -11,7 +11,7 @@
         <span class="lead">Total Bug reported : <%= @project.tickets.count %></span>
       </div>
     </div>
-    <% if current_user && current_user&.role.identifier == "project_manager"%>
+    <% if current_user && current_user.project_manager? || current_user.admin? %>
     <div class="col-6 mt-4">
       <% if @project.tickets&.count > 0 %>
         <%= render partial: 'projects/tickets', locals: { tickets: @project.tickets } %>

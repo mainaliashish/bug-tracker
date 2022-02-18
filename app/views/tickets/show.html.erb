@@ -28,7 +28,7 @@
           </span>
           </span>
       <% else %>
-        <span>Status : <span class="btn btn-primary btn-sm"><%= @ticket.status %></span></span>
+        <span>Status : <span class="btn btn-primary btn-sm"><%= @ticket.status ? @ticket.status : 'Not reviewed' %></span></span>
       <% end %>
       </div>
     </div>
