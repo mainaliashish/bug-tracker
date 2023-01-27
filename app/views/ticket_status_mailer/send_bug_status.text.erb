@@ -1,0 +1,16 @@
+<%= '=' * 100 %>
+Project name:  <%= @project_name %>
+<%= '=' * 100 %>
+<% if @tickets.exists? %>
+  <% @tickets.each_with_index do |ticket, index| %>
+      # <%= index + 1 %>
+      Title: <%= ticket.title %>
+      Description: <%= ticket.description %>
+      <%= '=' * 80 %>
+  <% end %>
+<% end %>
+<%= '=' * 100 %>
+To login to the site, just follow this link: <%= link_to 'Login Url', @url %>
+
+Have a great day! 🙂
+<%= '=' * 100 %>

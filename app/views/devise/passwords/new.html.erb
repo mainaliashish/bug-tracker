@@ -1,0 +1,12 @@
+<div class="row">
+  <p class="lead text-success fw-bold fs-4">
+    Forgot your password?
+  </p>
+  <div class="col-6">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), defaults: { input_html: { class: 'mb-2' } }) do |f| %>
+      <%= f.input :email  %>
+      <%= f.button :submit, data: { turbo: false }, value: 'Send me reset password instructions', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<%= render "devise/shared/links" %>

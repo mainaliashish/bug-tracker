@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? && policy(@projects).new? %>
+      <p class="lead fw-bold text-primary fs-4">Your current project
+      <%= link_to "Create new project", new_project_path, class: "btn btn-primary float-end" %></p>
+    <% else %>
+      <p class="lead fw-bold text-primary fs-4">Projects
+    <% end %>
+
+  </div>
+</div>
+
+<%= render partial: 'projects/table', locals: { page: 'index' } %>

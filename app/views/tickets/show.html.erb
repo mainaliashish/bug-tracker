@@ -1,0 +1,40 @@
+<div class="container mb-4">
+    <p class="lead fw-bold text-primary fs-4">Ticket Information</p>
+    <div class="card col-6">
+      <div class="card-header">
+        <span class="lead">
+          Ticket Title : <%= @ticket.title %>
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Description : <%= @ticket.description %></p>
+        <p class="card-text">Priority : <%= @ticket.priority %></p>
+        <p class="card-text">Bug Type : <%= @ticket.bug_type %></p>
+      </div>
+      <div class="card-footer">
+      <% if current_user && current_user.role.identifier == "developer" %>
+          <span id="toggle_status">
+          Action
+          <span class="float-end">
+          <% Ticket.statuses.each do |status| %>
+            <% if status[0] == @ticket.status %>    
+              <%= link_to status[0].capitalize, update_status_ticket_path(@ticket, status: status[1]), 
+                  method: :get, class: "btn btn-primary btn-sm" %>
+            <% else %>
+              <%= link_to status[0].capitalize, update_status_ticket_path(@ticket, status: status[1]), 
+                  method: :get, class: "btn btn-block btn-sm" %>
+            <% end %>
+          <% end %>
+          </span>
+          </span>
+      <% else %>
+        <span>Status : <span class="btn btn-primary btn-sm"><%= @ticket.status ? @ticket.status : 'Not reviewed' %></span></span>
+      <% end %>
+      </div>
+    </div>
+    <% if current_user %>
+      <%= link_to 'Go back', dashboard_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
+    <% else %>
+      <%= link_to 'Go back', root_path, class: 'btn btn-danger btn-sm mb-3 mt-3' %>
+    <% end %>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <p class="lead fw-bold fs-4">Welcome to dashboard</p>
+  <%= image_tag(current_user.profile_photo.url, class: "img rounded-circle img-response img-fluid img-thumbnail profile-photo") if current_user.profile_photo? %>
+  <div class="row mb-3">
+    <div class="col-6 mt-2">
+      <p class="lead fw-bold text-primary fs-4">Your information details : </p>  
+      <ul class="list-group list-group-flush">
+        <li class="lead list-group-item">Name : <%= current_user.full_name %></li>
+        <li class="lead list-group-item">Email : <%= current_user.email %></li>
+        <li class="lead list-group-item">Role : <%= current_user.role.name %></li>
+        <li class="list-group col-md-4 mt-2"><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %></li>
+      </ul>
+    </div>
+    <div class="col-6 mt-2">
+      <% if current_user&.project_manager? %>
+        <span class="float-end">
+          <%= link_to 'All projects', projects_path, class: "btn btn-danger btn-sm" %>
+          <%= link_to 'Create Project', new_project_path, class: "btn btn-success btn-sm" %>
+        </span>
+        <%= render partial: 'projects/table', locals: { page: 'dashboard' } %>
+      <% elsif current_user&.user? || current_user&.developer? %>
+        <p class="lead fw-bold text-primary fs-4">Your tickets : 
+        <% if current_user&.user? %>
+        <span class="float-end">
+          <%= link_to 'All Tickets', tickets_path, class: "btn btn-danger btn-sm" %>
+          <%= link_to 'Create Ticket', new_ticket_path, class: "btn btn-success btn-sm" %>
+        </span>
+        <% end %>
+        </p>
+        <% if @tickets && @tickets.count > 0 %>
+          <%= render partial: 'tickets/table', locals: { page: 'dashboard', tickets: @tickets }  %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

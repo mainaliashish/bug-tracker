@@ -1,0 +1,58 @@
+<%= form_with url: "/update_ticket_status", method: :put do |form| %>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-center">Title</th>
+      <% unless page == 'dashboard' %>
+        <th class="text-center">Description</th>
+      <% end %>
+      <th class="text-center">Project</th>
+      <th class="text-center">Type</th>
+      <th class="text-center">Status</th>
+      <th class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% if tickets.count > 0 %>
+      <%== pagy_bootstrap_combo_nav_js(@pagy) if @pagy %>
+    <% tickets.each do |ticket| %>
+    <tr>
+        <% if current_user&.developer? && policy(ticket).update_status? && page == 'dashboard' %>
+        <td>
+          <%= check_box_tag "ticket_ids[]", ticket.id %>
+        </td>
+        <% end %>
+        <td style="width: 25%"><%= link_to ticket.title, ticket_path(ticket) %></td>
+        <% unless page == 'dashboard' %>
+        <td><%= truncate(ticket.description, length: 20) %></td>
+        <% end %>
+        <td class="text-center"><%= ticket.project&.name %></td>
+        <td class="text-center"><%= ticket.bug_type %></td>
+        <% if ticket.status == 'fixed' %>
+          <td class="text-center fixed-ticket"><%= ticket.status ? ticket.status.capitalize : 'Unassigned' %></td>
+        <% else %>
+          <td class="text-center"><%= ticket.status ? ticket.status.capitalize : 'Unassigned' %></td>
+        <% end %>
+        <td class="text-center">
+          <%= link_to 'show', ticket_path(ticket), class: 'btn btn-primary btn-sm' %>
+          <% unless page == 'dashboard' %>
+            <% if user_signed_in? && policy(ticket).edit? %>
+              <%= link_to 'edit', edit_ticket_path(ticket), class: 'btn btn-success btn-sm' %>
+              <%= link_to 'delete', ticket_path(ticket), class: 'btn btn-danger btn-sm', data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?" } %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+  <% if page == 'dashboard' && current_user&.developer? %>
+    <%= form.select :status, Ticket.statuses %>
+
+    <%= form.submit data: { turbo: false }, value: "Update status", class:"btn btn-primary btn-sm"%>
+  <% end %>
+<% end %>

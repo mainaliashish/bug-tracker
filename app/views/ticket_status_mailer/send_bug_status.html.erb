@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <style>
+  body {
+    font-size: 19px;
+    padding: 20px;
+    border: 1px solid red;
+    box-shadow: 2px 2px lightseagreen;
+  }
+  </style>
+  <body>
+    <p style="font-size: 25px;">Project name:  <%= @project_name %> <p/>
+      <% if @tickets.exists? %>
+      <hr/>
+        <% @tickets.each_with_index do |ticket, index| %>
+          <p>Ticket#<%= index + 1 %></>
+          <p>Ticket Title : <%= ticket.title %></p>
+          <p>Ticket Description : <%= ticket.description %></p>
+          <hr/>
+        <% end %>
+      <% end %>
+      To login to the site, just follow this button: <%= link_to 'Login Url', @url %>
+    </p>
+    <p>Have a great day! 🙂</p>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <style>
+  body {
+    font-size: 19px;
+    padding: 20px;
+    border: 1px solid red;
+    box-shadow: 2px 2px lightseagreen;
+  }
+  </style>
+  <body>
+    <h3><%= @contact.name %> has send message from contact page.</h3>
+    <h4>The message is shown below : </h4>
+    <p>
+      <%= @contact.message %>
+    <p/>
+      To login to the site, just follow this link: <%= link_to 'Login Url', @url %>
+    </p>
+    <p>Have a great day! 🙂</p>
+  </body>
+
+</html>
