@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  after_create :ticket_mail
+  # after_create :ticket_mail
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true
